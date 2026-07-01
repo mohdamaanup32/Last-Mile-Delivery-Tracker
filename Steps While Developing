@@ -1,0 +1,16 @@
+Backend (Node.js + Express)
+├── Auth (JWT) — Customer / Agent / Admin roles
+├── Zone & Rate Card management (admin)
+├── Order creation + Rate calculation engine
+├── Auto-assignment logic (nearest agent by zone)
+├── Status lifecycle + immutable tracking log
+├── Failed delivery + reschedule flow
+└── Email notifications (Nodemailer + Gmail/SendGrid free tier)
+
+Frontend (React + Vite)
+├── Customer: Register, Login, Place Order, Track Order
+├── Agent: View assigned orders, Update status
+└── Admin: Manage zones, rate cards, orders, agents, override status
+
+Database: PostgreSQL (via Prisma ORM)
+Deploy: Railway (backend + DB) + Vercel (frontend)
