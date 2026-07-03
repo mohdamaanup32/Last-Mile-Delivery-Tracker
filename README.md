@@ -486,13 +486,13 @@ Delivery Attempt Again
 Frontend
 
 ```
-https://your-vercel-link.vercel.app
+https://pacific-sparkle-production-903d.up.railway.app
 ```
 
 Backend
 
 ```
-https://your-render-link.onrender.com
+https://bountiful-rejoicing-production-0c9b.up.railway.app
 ```
 
 ---
