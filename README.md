@@ -1,223 +1,264 @@
 # 🚚 Last-Mile Delivery Tracker
 
-A MERN-based logistics management platform that automates delivery pricing, intelligent delivery agent assignment, live order tracking, and customer notifications. The system supports three user roles: **Customer**, **Delivery Agent**, and **Admin**.
+A full-stack logistics management platform that automates delivery pricing, intelligent delivery agent assignment, shipment tracking, and customer notifications.
+
+The application supports three user roles:
+
+- 👤 Customer
+- 🚴 Delivery Agent
+- 👨‍💼 Admin
+
+The project is built using **React (Vite)**, **Node.js**, **Express**, **PostgreSQL**, **Prisma ORM**, and deployed entirely on **Railway**.
 
 ---
 
-# Features
+# 🌟 Features
 
-## Customer
+## 👤 Customer
 
-* Register & Login
-* Place Delivery Orders
-* Live Order Tracking
-* View Delivery Timeline
-* Reschedule Failed Deliveries
-* Email & SMS Notifications
-
-## Delivery Agent
-
-* Login
-* View Assigned Orders
-* Update Delivery Status
-* Mark Delivery as Failed
-* Complete Deliveries
-
-## Admin
-
-* Manage Customers & Agents
-* Create Orders on Customer's Behalf
-* Manage Zones & Areas
-* Configure Rate Cards
-* Configure COD Charges
-* Manual & Automatic Agent Assignment
-* View & Filter All Orders
-* Override Order Status
+- Register & Login
+- Place Delivery Orders
+- Track Order Status
+- View Delivery Timeline
+- Reschedule Failed Deliveries
+- Receive Email Notifications
 
 ---
 
-# Tech Stack
+## 🚴 Delivery Agent
 
-### Frontend
-
-* React.js
-* Tailwind CSS
-* Axios
-* React Router
-
-### Backend
-
-* Node.js
-* Express.js
-
-### Database
-
-* MongoDB Atlas
-* Mongoose
-
-### Authentication
-
-* JWT
-* bcrypt
-
-### Notifications
-
-* Nodemailer
-* Twilio (SMS)
-
-### Deployment
-
-* Frontend: Vercel
-* Backend: Render
-* Database: MongoDB Atlas
+- Login
+- View Assigned Orders
+- Update Delivery Status
+- Mark Deliveries as Failed
+- Complete Deliveries
 
 ---
 
-# Project Structure
+## 👨‍💼 Admin
+
+- Dashboard
+- Manage Customers
+- Manage Delivery Agents
+- Create Orders
+- Manage Zones
+- Configure Rate Cards
+- Configure COD Charges
+- Automatic Agent Assignment
+- Manual Agent Assignment
+- View All Orders
+- Update Order Status
+
+---
+
+# 🛠 Tech Stack
+
+## Frontend
+
+- React.js
+- Vite
+- Tailwind CSS
+- React Router
+- Axios
+
+---
+
+## Backend
+
+- Node.js
+- Express.js
+
+---
+
+## Database
+
+- PostgreSQL
+- Prisma ORM
+
+---
+
+## Authentication
+
+- JWT
+- bcrypt
+
+---
+
+## Notifications
+
+- Nodemailer
+
+---
+
+## Deployment
+
+- Railway (Frontend)
+- Railway (Backend)
+- Railway PostgreSQL
+
+---
+
+# 📁 Project Structure
 
 ```text
-last-mile-delivery-tracker/
-
-client/
-server/
-
-server/
-controllers/
-routes/
-models/
-middleware/
-config/
-services/
-utils/
-
-client/
-src/
-components/
-pages/
-context/
-services/
+Last-Mile-Delivery-Tracker/
+│
+├── backend/
+│   ├── prisma/
+│   ├── src/
+│   ├── package.json
+│   ├── prisma.schema
+│   └── ...
+│
+├── public/
+├── src/
+├── index.html
+├── package.json
+├── vite.config.js
+├── README.md
+└── .env.example
 ```
 
 ---
 
-# Installation Guide
+# 🚀 Installation
 
-## Clone Repository
+## 1. Clone Repository
 
 ```bash
-git clone https://github.com/yourusername/last-mile-delivery-tracker.git
+git clone https://github.com/mohdamaanup32/Last-Mile-Delivery-Tracker.git
 
-cd last-mile-delivery-tracker
+cd Last-Mile-Delivery-Tracker
 ```
 
 ---
 
-## Backend Setup
+## 2. Backend Setup
 
 ```bash
-cd server
+cd backend
 
+npm install
+
+npx prisma generate
+
+npx prisma migrate dev
+
+npm run dev
+```
+
+Backend runs on:
+
+```
+http://localhost:5000
+```
+
+---
+
+## 3. Frontend Setup
+
+Open another terminal
+
+```bash
 npm install
 
 npm run dev
 ```
 
----
+Frontend runs on
 
-## Frontend Setup
-
-```bash
-cd client
-
-npm install
-
-npm start
+```
+http://localhost:5173
 ```
 
 ---
 
-# Environment Variables (.env.example)
+# ⚙ Environment Variables
+
+## Backend (.env)
 
 ```env
 PORT=5000
 
-MONGODB_URI=your_mongodb_connection
+DATABASE_URL=
 
-JWT_SECRET=your_secret_key
+JWT_SECRET=
 
-EMAIL_USER=your_email@gmail.com
+EMAIL_USER=
 
-EMAIL_PASS=your_email_password
+EMAIL_PASS=
 
-TWILIO_ACCOUNT_SID=xxxxxxxxxxxx
-
-TWILIO_AUTH_TOKEN=xxxxxxxxxxxx
-
-TWILIO_PHONE=+91xxxxxxxxxx
-
-CLIENT_URL=http://localhost:3000
+FRONTEND_URL=http://localhost:5173
 ```
 
 ---
 
-# API Documentation
+## Frontend (.env)
+
+```env
+VITE_API_URL=http://localhost:5000/api
+```
+
+---
+
+# 📚 API Documentation
 
 ## Authentication
 
-| Method | Endpoint           | Description   |
-| ------ | ------------------ | ------------- |
-| POST   | /api/auth/register | Register User |
-| POST   | /api/auth/login    | Login User    |
+| Method | Endpoint | Description |
+|---------|----------|-------------|
+| POST | /api/auth/register | Register User |
+| POST | /api/auth/login | Login User |
 
 ---
 
-## Customer
+## Orders
 
-| Method | Endpoint               |
-| ------ | ---------------------- |
-| POST   | /api/orders            |
-| GET    | /api/orders            |
-| GET    | /api/orders/:id        |
-| PUT    | /api/orders/reschedule |
+| Method | Endpoint |
+|---------|----------|
+| POST | /api/orders |
+| GET | /api/orders |
+| GET | /api/orders/:id |
+| PUT | /api/orders/reschedule |
 
 ---
 
-## Delivery Agent
+## Agent
 
-| Method | Endpoint           |
-| ------ | ------------------ |
-| GET    | /api/agent/orders  |
-| PUT    | /api/orders/status |
+| Method | Endpoint |
+|---------|----------|
+| GET | /api/agent/orders |
+| PUT | /api/orders/status |
 
 ---
 
 ## Admin
 
-| Method | Endpoint           |
-| ------ | ------------------ |
-| POST   | /api/zones         |
-| POST   | /api/areas         |
-| POST   | /api/ratecards     |
-| POST   | /api/agents        |
-| PUT    | /api/orders/assign |
-| GET    | /api/orders/all    |
+| Method | Endpoint |
+|---------|----------|
+| POST | /api/zones |
+| POST | /api/areas |
+| POST | /api/ratecards |
+| POST | /api/agents |
+| PUT | /api/orders/assign |
+| GET | /api/orders/all |
 
 ---
 
-# Database Schema
+# 🗄 Database Schema
 
 ## User
 
 ```javascript
 {
+ id,
  name,
  email,
  password,
  role,
  phone,
- address,
- currentLocation,
- availability
+ availability,
+ createdAt
 }
 ```
 
@@ -227,23 +268,21 @@ CLIENT_URL=http://localhost:3000
 
 ```javascript
 {
- customer,
+ id,
+ customerId,
  pickupAddress,
  dropAddress,
  pickupZone,
  dropZone,
- length,
- breadth,
- height,
  actualWeight,
  volumetricWeight,
  billableWeight,
- orderType,
+ shipmentType,
  paymentType,
  deliveryCharge,
  assignedAgent,
  status,
- rescheduleDate
+ createdAt
 }
 ```
 
@@ -253,6 +292,7 @@ CLIENT_URL=http://localhost:3000
 
 ```javascript
 {
+ id,
  zoneName,
  areas[]
 }
@@ -264,8 +304,9 @@ CLIENT_URL=http://localhost:3000
 
 ```javascript
 {
- orderType,
+ id,
  shipmentType,
+ orderType,
  pricePerKg,
  codCharge
 }
@@ -273,30 +314,17 @@ CLIENT_URL=http://localhost:3000
 
 ---
 
-## Tracking History
+# 💰 Rate Calculation Logic
 
-```javascript
-{
- orderId,
- status,
- timestamp,
- updatedBy
-}
-```
+Whenever a customer places an order, the delivery charge is calculated automatically.
 
----
-
-# Rate Calculation Logic
-
-The delivery charge is calculated automatically whenever a customer creates an order.
-
-### Step 1
+## Step 1
 
 Calculate Volumetric Weight
 
 ```
 Volumetric Weight =
-(L × B × H)/5000
+(L × B × H) / 5000
 ```
 
 Example
@@ -304,16 +332,16 @@ Example
 ```
 40 × 30 × 20
 
-=24000
+= 24000
 
-24000/5000
+24000 / 5000
 
-=4.8 Kg
+= 4.8 Kg
 ```
 
 ---
 
-### Step 2
+## Step 2
 
 Compare
 
@@ -325,11 +353,11 @@ Volumetric Weight = 4.8 Kg
 Billable Weight = 4.8 Kg
 ```
 
-Higher value is selected.
+The larger value becomes the Billable Weight.
 
 ---
 
-### Step 3
+## Step 3
 
 Detect Pickup Zone
 
@@ -345,7 +373,7 @@ Zone A
 
 ---
 
-### Step 4
+## Step 4
 
 Detect Drop Zone
 
@@ -359,7 +387,7 @@ Zone B
 
 ---
 
-### Step 5
+## Step 5
 
 Determine Shipment Type
 
@@ -375,28 +403,26 @@ Zone A → Zone B
 
 ---
 
-### Step 6
+## Step 6
 
-Fetch Correct Rate Card
+Fetch Applicable Rate Card
 
-According to
+Based on
 
-* B2B / B2C
-* Intra / Inter Zone
+- B2B / B2C
+- Intra / Inter Zone
 
 ---
 
-### Step 7
+## Step 7
 
 Calculate Delivery Charge
 
 ```
 Billable Weight
-
 ×
 
 Rate Per Kg
-
 +
 
 COD Charge (if applicable)
@@ -404,17 +430,19 @@ COD Charge (if applicable)
 
 ---
 
-# Auto Assignment Logic
+# 🤖 Automatic Agent Assignment
 
-1. Find available delivery agents.
-2. Filter agents serving the pickup zone.
-3. If GPS coordinates are available, assign the nearest agent.
-4. Otherwise, assign the least busy available agent.
-5. Admin can manually override the assignment.
+The assignment engine follows these steps:
+
+1. Detect pickup zone.
+2. Find available delivery agents.
+3. Filter agents serving that zone.
+4. Assign the least busy or nearest available agent.
+5. Allow admin to override the assignment manually if required.
 
 ---
 
-# Order Lifecycle
+# 📦 Order Lifecycle
 
 ```
 Order Created
@@ -446,14 +474,14 @@ Failed
 
 ---
 
-# Failed Delivery Flow
+# 🔄 Failed Delivery Workflow
 
 ```
 Delivery Failed
 
 ↓
 
-Email & SMS Sent
+Customer Receives Email
 
 ↓
 
@@ -470,33 +498,70 @@ Delivery Attempt Again
 
 ---
 
-# Future Enhancements
+# 🚀 Live Deployment
 
-* Google Maps Integration
-* Live GPS Tracking
-* Payment Gateway
-* Analytics Dashboard
-* AI-Based Route Optimization
-* Push Notifications
+### Frontend
 
----
-
-# Deployment
-
-Frontend
-
-```
 https://pacific-sparkle-production-903d.up.railway.app
-```
 
-Backend
+---
 
-```
+### Backend API
+
 https://bountiful-rejoicing-production-0c9b.up.railway.app
+
+---
+
+# 🔑 Demo Credentials
+
+### Admin
+
+```
+Email:
+admin@lastmile.com
+
+Password:
+Password123!
 ```
 
 ---
 
-# License
+### Delivery Agent
 
-This project is developed for educational and assessment purposes.
+```
+Email:
+agent1@lastmile.com
+
+Password:
+Password123!
+```
+
+---
+
+### Customer
+
+```
+Email:
+customer@lastmile.com
+
+Password:
+Password123!
+```
+
+---
+
+# 🔮 Future Enhancements
+
+- Live GPS Tracking
+- Google Maps Integration
+- SMS Notifications
+- Push Notifications
+- Payment Gateway
+- Analytics Dashboard
+- AI Route Optimization
+
+---
+
+# 📄 License
+
+This project was developed as part of the **Unthinkable Solutions Full Stack Developer Assignment** for educational and assessment purposes.
